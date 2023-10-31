@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>3ds ROM GUI</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <header>
+    <a>3ds ROM GUI</a>
+    <h1>Roms (Decrypted)</h1>
+  </header>
+  <body>
+    <div id="neutralinoapp">
+      <input type="text" id="search" placeholder="Search for a game" value="">
+      <div id="games"></div>
+      <br/>
+    </div>
+    <!-- Neutralino.js client. This file is gitignored, 
+        because `neu update` typically downloads it.
+        Avoid copy-pasting it. 
+        -->
+      <footer>Made with love by <a onclick="openLeGithubDeLaGoatDesGoats()">Maven</a> 💜
+          <h6>Roms from
+              <a onclick="openSite()">myrient</a>
+          </h6>
+      </footer>
+      <script src="js/neutralino.js"></script>
+      <!-- Your app's source files -->
+      <script type="module" src="js/main.js"></script>
+      <script src="js/modules/site.js"></script>
+  </body>
+</html>
