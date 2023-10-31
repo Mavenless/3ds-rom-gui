@@ -14,6 +14,27 @@ async function showGames(games = null) {
     document.getElementById('games').innerHTML = `
     <ul>${gameList}</ul>
     `;
+    const downloadBtn = document.getElementsByClassName('btn-download');
+    Array.from(downloadBtn).forEach(btns => {
+
+        btns.addEventListener("click", async (name) => {
+            // download link
+            btns.classList.toggle('downloaded');
+            let directory = JSON.parse(config).directory;
+            const game = name.srcElement.getAttribute('value');
+            
+            if(directory == null) {
+                do {
+                    directory = await Neutralino.os.showFolderDialog("Select a directory", { defaultPath: await Neutralino.os.getPath("documents") });
+                    await Neutralino.storage.setData('userDetails', JSON.stringify({ directory: directory}));
+                } while(directory == null || directory == "");
+                config = await Neutralino.storage.getData('userDetails');
+            }
+    
+            await fetch(localhost + 'installGame?name=' + game + '&directory=' + directory);
+            await Neutralino.os.showNotification(`3DS`, "Downloading... Please wait", "INFO"); // Neutralino OS notification doesn't work (yet)
+        });
+    });
 } 
 
 document.getElementById('search').addEventListener("input", async (name) => {
@@ -74,26 +95,3 @@ Neutralino.events.on('spawnedProcess', (evt) => {
 
 const gamess = await fetch(localhost + 'getGames').then(response => response.json());
 await showGames();
-
-const downloadBtn = document.getElementsByClassName('btn-download');
-
-Array.from(downloadBtn).forEach(btns => {
-
-    btns.addEventListener("click", async (name) => {
-        // download link
-        btns.classList.toggle('downloaded');
-        let directory = JSON.parse(config).directory;
-        const game = name.srcElement.getAttribute('value');
-        
-        if(directory == null) {
-            do {
-                directory = await Neutralino.os.showFolderDialog("Select a directory", { defaultPath: await Neutralino.os.getPath("documents") });
-                await Neutralino.storage.setData('userDetails', JSON.stringify({ directory: directory}));
-            } while(directory == null || directory == "");
-            config = await Neutralino.storage.getData('userDetails');
-        }
-
-        await fetch(localhost + 'installGame?name=' + game + '&directory=' + directory);
-        await Neutralino.os.showNotification(`3DS`, "Downloading... Please wait", "INFO"); // Neutralino OS notification doesn't work (yet)
-    });
-});
