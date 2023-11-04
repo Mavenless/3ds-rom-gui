@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Download and extract 3DS ROM wrapper
-wget https://github.com/NarumiLy/3ds-rom-gui/releases/download/Brrrrr/3dsgui-1.0.0-fixed.zip
+wget "https://github.com/NarumiLy/3ds-rom-gui/releases/download/Brrrrr/3dsgui-1.0.0-fixed.zip"
 unzip "3dsgui-1.0.0-fixed.zip" -d "$HOME/Documents/3DSgui"
 rm "3dsgui-1.0.0-fixed.zip"
 $name = ""
