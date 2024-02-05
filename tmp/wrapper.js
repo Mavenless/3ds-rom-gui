@@ -57,7 +57,7 @@ async function getGameByName(name, list) {
 }
 
 async function installGame(name, directory) {
-    const link = url + name.replaceAll("% ", "%25 ").replaceAll(" ", '%20');
+    const link = "https://download5.erista.me/No-Intro/Nintendo - Nintendo 3DS (Decrypted)/" + name.replaceAll("% ", "%25 ").replaceAll(" ", '%20');
     const file = fs.createWriteStream(directory + "/" + name.replace(/%20/g, ' '));
     console.log(link)
     https.get(link, (res) => {
