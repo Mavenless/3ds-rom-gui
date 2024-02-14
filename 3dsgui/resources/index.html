@@ -3,30 +3,37 @@
   <head>
     <meta charset="UTF-8">
     <title>3ds ROM GUI</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <html data-theme="night"></html>
+
   </head>
-  <header>
+  <header class="text-center">
     <a>3ds ROM GUI</a>
-    <h1>Roms (Decrypted)</h1>
+    <h1 class="mb-3">Roms (Decrypted)</h1>
   </header>
   <body>
-    <div id="neutralinoapp">
-      <input type="text" id="search" placeholder="Search for a game" value="">
-      <div id="games"></div>
-      <br/>
+    <div class="items-center content-center text-center">
+      <input type="text" placeholder="Search for a game" id="search" class="input input-bordered input-primary w-full max-w-xs mb-3"/>
+
+      <div id="games" class="text-center flex flex-col justify-center"></div>
+      </div>
     </div>
     <!-- Neutralino.js client. This file is gitignored, 
         because `neu update` typically downloads it.
         Avoid copy-pasting it. 
         -->
-      <footer>Made with love by <a onclick="openLeGithubDeLaGoatDesGoats()">Maven</a> 💜
-          <h6>Roms from
-              <a onclick="openSite()">myrient</a>
-          </h6>
+      <footer class="footer footer-center bg-base-300">
+        <aside>
+            <p>
+              Made with love by <a onclick="openLeGithubDeLaGoatDesGoats()" class="transition ease-in hover:text-secondary">Maven</a> 💜 - Roms from <a onclick="openSite()" class="transition ease-in hover:text-secondary">myrient</a>
+            </p>
+          </aside>
       </footer>
       <script src="js/neutralino.js"></script>
       <!-- Your app's source files -->
-      <script type="module" src="js/main.js"></script>
+      <script type="module" src="js/main.ts"></script>
       <script src="js/modules/site.js"></script>
   </body>
 </html>

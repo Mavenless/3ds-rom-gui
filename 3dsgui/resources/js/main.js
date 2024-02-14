@@ -7,13 +7,17 @@ async function showGames(games = null) {
     let gameList = "";
 
     for (const game of games) { 
-        const downloadlogo= '<div class="btn-download" value="' + game.replace(/ /g, '%20') + '">\n  <svg value="' + game.replace(/ /g, '%20') + '" width="22px" height="16px" viewBox="0 0 22 16">\n    <path value="' + game.replace(/ /g, '%20') + '" d="M2,10 L6,13 L12.8760559,4.5959317 C14.1180021,3.0779974 16.2457925,2.62289624 18,3.5 L18,3.5 C19.8385982,4.4192991 21,6.29848669 21,8.35410197 L21,10 C21,12.7614237 18.7614237,15 16,15 L1,15" id="check"></path>\n    <polyline value="' + game.replace(/ /g, '%20') + '" points="4.5 8.5 8 11 11.5 8.5" class="svg-out"></polyline>\n    <path value="' + game.replace(/ /g, '%20') + '" d="M8,1 L8,11" class="svg-out"></path>\n</svg>\n</div>';
-        gameList += `<li>${game} ${downloadlogo}</li>\n`;
+        gameList += `<div class="btn-download my-3 mx-auto card w-96 shadow-xl bg-slate-950 hover:bg-slate-800 transition ease-in">
+        <div class="card-body">
+          <h1 class="text-center text-2xl">${game}</h2>
+            <button class="btn btn-primary btn-download">Download</button>
+        </div>
+      </div>\n`;
 
     }
-    document.getElementById('games').innerHTML = `
-    <ul>${gameList}</ul>
-    `;
+    console.log(document.getElementById('games').innerHTML = `
+    ${gameList}
+    `);
     const downloadBtn = document.getElementsByClassName('btn-download');
     Array.from(downloadBtn).forEach(btns => {
 
